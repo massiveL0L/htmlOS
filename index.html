@@ -1,7 +1,49 @@
-
-<audio autoplay>
-	<source src="/media/startupHTMLos.mp3" type="audio/mpeg">
-</audio>
-<video autoplay height="220" width="390">
-	<source src="/media/video.mp4" type="video/mp4">
-</video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htmlOS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #startup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+    </style>
+</head>
+<body>
+    <div id="startup-container">
+        <video id="startup-video" src="https://download.wetransfer.com/usgv/2386c1631fb353c1c2af64b889bc7afc20250221002559/318990d0d3abc17dc156e5e25aa02c7fd6ff2006/htmlOSstartupvideo.mov?cf=y&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRlZmF1bHQifQ.eyJleHAiOjE3NDAxMTIwMTcsImlhdCI6MTc0MDA5NzYxNywiZG93bmxvYWRfaWQiOiI2YTA0YTMyMy01ZjMzLTQxN2MtODJiMS00YzdmZWJiOGFkOWQiLCJzdG9yYWdlX3NlcnZpY2UiOiJzdG9ybSJ9.ZYNUFTjKN-uMtmQ6Jemr2n8JHlha9Av4XAVg205U3m4" autoplay></video>
+        <audio id="startup-audio" src="media/startupHTMLos.mp3" autoplay></audio>
+    </div>
+    <script>
+        document.getElementById('startup-video').addEventListener('ended', function() {
+            document.getElementById('startup-container').classList.add('fade-out');
+        });
+    </script>
+</body>
+</html>
